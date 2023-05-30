@@ -9,13 +9,10 @@ theme:
 edit_uri: edit/main/docs/
 nav:
   - index.md
-  - Tasks:
-    - tasks/task1.md
-    - tasks/task2.md
-    - tasks/task3.md
-  - Resources:
-    - downloads.md
-    - '🏆 Score board': score_board.md
+  - programme.md
+  #- Resources:
+  #  - downloads.md
+    #- '🏆 Score board': score_board.md
     # - registration.md
     # - rules.md
   - More information:
@@ -31,3 +28,5 @@ markdown_extensions:
 strict: false
 # new analytics
 # google_analytics: ['G-HSMK67B4JN', 'icdar21-mapseg.github.io']
+extra_css:
+  - 'stylesheets/extra.css'
