@@ -10,7 +10,7 @@ Particular attention will be paid to the collaborative capabilities of QGIS to c
 
 The workshop is open to members of the [Leibniz Institute for Regional Geography](https://leibniz-ifl.de) and the [DigiKAR project](https://digikar.eu).
 
-**Registration is mandatory for all participants, see [#Registration](#🗳️-registration)**.
+**Registration is mandatory for all participants, see [#Registration](#registration)**.
 
 
 ## 📝 Details
