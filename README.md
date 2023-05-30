@@ -1,36 +1,10 @@
-# ICDAR 2021 Competition on Historical Map Segmentation
-This is the repository for the official website of the ICDAR 2021 Competition on Historical Map Segmentation.
+# DigiKAR: QGIS hands-on session, 11-12 July 2023
+This is the repository for the companion website of the DigiKAR QGIS Tutorial that will be held at the Leibniz Institute for Regional Geography in Leipzig on July 11-12 2023.
 
-You can access the official website at [icdar21-mapseg.github.io](https://icdar21-mapseg.github.io).
-
-## Quick help for visitors and participants in the competition
+You can access the official website at [icdar21-mapseg.github.io](https://digikar-qgis.github.io).
 
 ### How to contact the organizers?
-You can **reach the organizers by email** at `icdar21-mapseg-contact(at)googlegroups.com`.
-
-### How to download the dataset?
-Please check the downloads section under the [official website](https://icdar21-mapseg.github.io).
-
-### How to subscribe to dataset or evaluation tools updates?
-You can follow/star the associated GitHub repositories.
-
-You can also subscribe to the announcements group by sending an email to icdar21-mapseg-announcements+subscribe@googlegroups.com
-(you can unsubscribe at any time).
-
-### How to get reminders about each important phase of the competition?
-Please subscribe to the announcements group by sending an email to icdar21-mapseg-announcements+subscribe@googlegroups.com
-(you can unsubscribe at any time).
-
-### How to raise an issue about…
-- **…the website?**  
-   ↳ Please fill an issue [here](https://github.com/icdar21-mapseg/icdar21-mapseg.github.io/issues)
-- **…the dataset?**  
-   ↳ Please fill an issue on the dataset repository
-- **…the evaluation tools?**  
-   ↳ Please fill an issue on the evaluation tools repository
-
-
-## Quick help for competition organizers
+You can **reach the organizers by email** at `digikar-qgis.rg2ug(at)aleeas.com``.
 
 ### How to update the website?
 1. Install [MkDocs](https://www.mkdocs.org/) and [markdown-katex](https://gitlab.com/mbarkhau/markdown-katex) (to support math, please check this page for syntax documentation).  
