@@ -29,6 +29,6 @@ markdown_extensions:
       # macro-file: macros.tex
   - attr_list
   - fontawesome_markdown
-strict: true
+strict: false
 # new analytics
 google_analytics: ['G-HSMK67B4JN', 'icdar21-mapseg.github.io']
