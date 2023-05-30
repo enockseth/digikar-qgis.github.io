@@ -17,12 +17,10 @@ nav:
     # - rules.md
   - More information:
     - contact.md
-    # - 'Issue Tracker (external)': 'https://github.com/icdar21-mapseg/icdar21-mapseg.github.io/issues'
 markdown_extensions:
   - markdown_katex:
       no_inline_svg: True
       insert_fonts_css: True
-      # macro-file: macros.tex
   - attr_list
   - fontawesome_markdown
 strict: false
