@@ -1,7 +1,7 @@
-site_name: ICDAR 2021 Competition on Historical Map Segmentation
-repo_url: https://github.com/icdar21-mapseg/icdar21-mapseg.github.io
-site_description: Official site for the ICDAR 2021 Competition on Historical Map Segmentation. Download all material and review score boards here.
-site_author: J. Chazalon; E. Carlinet; Y. Chen; J. Perret; C. Mallet; B. Duménieu; T. Géraud
+site_name: DigiKAR QGIS tutorial
+repo_url: https://github.com/digikar-qgis/digikar-qgis.github.io
+site_description: The companion site to the QGIS training session for DigiKAR, July 11-12, 2023.
+site_author: Bertrand Duménieu
 theme:
     name: readthedocs
     # collapse_navigation: true
@@ -21,7 +21,6 @@ nav:
   - More information:
     - contact.md
     # - 'Issue Tracker (external)': 'https://github.com/icdar21-mapseg/icdar21-mapseg.github.io/issues'
-    - 'Twitter (external)': 'https://twitter.com/ICDAR21_MapSeg'
 markdown_extensions:
   - markdown_katex:
       no_inline_svg: True
@@ -31,4 +30,4 @@ markdown_extensions:
   - fontawesome_markdown
 strict: false
 # new analytics
-google_analytics: ['G-HSMK67B4JN', 'icdar21-mapseg.github.io']
+# google_analytics: ['G-HSMK67B4JN', 'icdar21-mapseg.github.io']
