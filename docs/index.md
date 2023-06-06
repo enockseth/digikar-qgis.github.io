@@ -10,7 +10,7 @@ Particular attention will be paid to the collaborative capabilities of QGIS to c
 
 The workshop is open to members of the [Leibniz Institute for Regional Geography](https://leibniz-ifl.de) and the [DigiKAR project](https://digikar.eu).
 
-**Registration is mandatory for all participants, see [#Registration](#registration)**.
+**Registration is mandatory for all participants, see [#Registration](#registration)**. Full time participation is highly advised as the individual parts of the workshop build on each other.
 
 
 ## 📝 Details
@@ -30,8 +30,17 @@ The workshop is open to members of the [Leibniz Institute for Regional Geography
 ## 🗳️ Registration
 **<span style="color:#ff9800">⚠️ Remote participation is not available</span>**
 
+⚠️ We are required to limit the number of participants due to space constraints. 
+Therefore we adopt a "first come, first served" policy and will close registrations as soon as the maximum number of attendees  is reached.
+However, we may be obliged to turn away the last registrants in the event of large numbers.
+
+All participants will receive confirmation of their registration within a few days. 
+**Please note that your registration is not validated until you have received a confirmation email.**
+
+
+
 <center style="margin: 1rem">
 <a class="button-38" href="https://evento.renater.fr/survey/registration-to-the-digikar-hands-on-session-for-qgis-2drijkgp">Click here to register</a>
  </center>
 
-<small>Registration is made with Renater's Evento. Renater is the French national research and education network, all personal data (name, email) in your answers will not be retained after the survey closes on July 13 2023.</small>
+<small>Registration is made with Renater's Evento. Renater is the French national research and education network, any personal data (name, email) in your answers will not be retained after the survey closes on July 13 2023.</small>
