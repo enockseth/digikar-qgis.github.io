@@ -5,7 +5,22 @@ site_author: Bertrand Duménieu
 theme:
     name: readthedocs
     # collapse_navigation: true
+    icon:
+      admonition:
+        note: fontawesome/solid/note-sticky
+        abstract: fontawesome/solid/book
+        info: fontawesome/solid/circle-info
+        tip: fontawesome/solid/bullhorn
+        success: fontawesome/solid/check
+        question: fontawesome/solid/circle-question
+        warning: fontawesome/solid/triangle-exclamation
+        failure: fontawesome/solid/bomb
+        danger: fontawesome/solid/skull
+        bug: fontawesome/solid/robot
+        example: fontawesome/solid/flask
+        quote: fontawesome/solid/quote-left
     custom_dir: theme_customizations
+
 edit_uri: edit/main/docs/
 nav:
   - index.md
@@ -23,8 +38,13 @@ markdown_extensions:
       insert_fonts_css: True
   - attr_list
   - fontawesome_markdown
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 strict: false
 # new analytics
 # google_analytics: ['G-HSMK67B4JN', 'icdar21-mapseg.github.io']
 extra_css:
   - 'stylesheets/extra.css'
+
+
