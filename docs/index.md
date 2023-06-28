@@ -24,7 +24,9 @@ The workshop is open to members of the [Leibniz Institute for Regional Geography
 
 ## 🧰 Technical requirements
 - **Bring your own laptop**, with an external mouse. Vectorizing with the pad is awful!
-- **Install [QGIS 3.30](https://www.qgis.org/fr/site/forusers/download.html)** before the session.
+- It is recommended that your computer has at least **4Gb of RAM**. QGIS will run with less, but some heavy operations (e.g. georeferencing) may fail.
+- **Install the last stable version of [QGIS](https://www.qgis.org/fr/site/forusers/download.html)** before the session. As of 28 June 2023, the version QGIS available for download is `v3.32`. **Any version >= 3.30 is ok**.
+- If you are taking part in the georeferencing session on Tuesday, ensore that you have at least **25Gb of disk space available**.
 - Ensure that the **Wi-Fi configuration on your computer is not restricted** by a proxy server or a VPN. QGIS will need to access a remote GIS database on network port 5432, which might be blocked due to your organization's security policies.
 
 
