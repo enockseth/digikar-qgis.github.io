@@ -16,4 +16,4 @@ You can also [create an issue on our tracker](https://github.com/digikar-qgis/is
 
 **This tutorial is part of the DigiKAR research project.**
 
-<center>![DigiKAR](./img/digikar.png){ width=200px }</center>
+<center>![DigiKAR](./images/digikar.png){ width=200px }</center>

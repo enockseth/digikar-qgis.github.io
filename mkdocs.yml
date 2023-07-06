@@ -25,6 +25,9 @@ edit_uri: edit/main/docs/
 nav:
   - index.md
   - programme.md
+  - Tutorials:
+    - tutorials/tutorial_1/text.md
+    - tutorials/tutorial_2/text.md
   #- Resources:
   #  - downloads.md
     #- '🏆 Score board': score_board.md
