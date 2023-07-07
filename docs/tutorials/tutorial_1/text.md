@@ -194,56 +194,58 @@ Let's quickly examine the [CRS `WGS 84 / Pseudo-Mercator`](https://en.wikipedia.
 To do this, search for this CRS using the field `Filter`  and select it (you can write the name or the identifier `EPSG:3857`).
 
 In (2), take a look at the `WKT` property, which provides the structured definition of this CRS. Here are the main elements of this CRS:
-```
-------------------------------------------------------------
-BLOCK #0 : DEFINITION
-------------------------------------------------------------
-PROJCRS["WGS 84 / Pseudo-Mercator",
-------------------------------------------------------------
-BLOCK #1 : BASEGEOGCRS
-------------------------------------------------------------
-    BASEGEOGCRS["WGS 84",  
-        ENSEMBLE["World Geodetic System 1984 ensemble",
-        ...
-            ELLIPSOID["WGS 84",6378137,298.257223563,  
-                LENGTHUNIT["metre",1]],  
-            ENSEMBLEACCURACY[2.0]],  
-        PRIMEM["Greenwich",0,  
-            ANGLEUNIT["degree",0.0174532925199433]],  
-        ID["EPSG",4326]],
-------------------------------------------------------------
-BLOCK #2 : MAP PROJECTION
-------------------------------------------------------------
-    CONVERSION["Popular Visualisation Pseudo-Mercator",  
-            ID["EPSG",1024]],  
-        PARAMETER["Latitude of natural origin",0,  
-            ANGLEUNIT["degree",0.0174532925199433],  
-            ID["EPSG",8801]],  
-        PARAMETER["Longitude of natural origin",0,  
-            ANGLEUNIT["degree",0.0174532925199433],  
-            ID["EPSG",8802]],  
-        PARAMETER["False easting",0,  
-            LENGTHUNIT["metre",1],  
-            ID["EPSG",8806]],  
-        PARAMETER["False northing",0,  
-            LENGTHUNIT["metre",1],  
-            ID["EPSG",8807]]],
-    CS[Cartesian,2],  
-        AXIS["easting (X)",east,  
-            ORDER[1],  
-            LENGTHUNIT["metre",1]],  
-        AXIS["northing (Y)",north,  
-            ORDER[2],  
-            LENGTHUNIT["metre",1]],  
-------------------------------------------------------------
-BLOCK #3 : USAGE DOCUMENTATION
-------------------------------------------------------------
-    USAGE[  
-        SCOPE["Web mapping and visualisation."],  
-        AREA["World between 85.06°S and 85.06°N."],  
-        BBOX[-85.06,-180,85.06,180]],  
-    ID["EPSG",3857]]
-```
+
+
+	------------------------------------------------------------
+	BLOCK #0 : DEFINITION
+	------------------------------------------------------------
+	PROJCRS["WGS 84 / Pseudo-Mercator",
+	------------------------------------------------------------
+	BLOCK #1 : BASEGEOGCRS
+	------------------------------------------------------------
+	    BASEGEOGCRS["WGS 84",  
+	        ENSEMBLE["World Geodetic System 1984 ensemble",
+	        ...
+	            ELLIPSOID["WGS 84",6378137,298.257223563,  
+	                LENGTHUNIT["metre",1]],  
+	            ENSEMBLEACCURACY[2.0]],  
+	        PRIMEM["Greenwich",0,  
+	            ANGLEUNIT["degree",0.0174532925199433]],  
+	        ID["EPSG",4326]],
+	------------------------------------------------------------
+	BLOCK #2 : MAP PROJECTION
+	------------------------------------------------------------
+	    CONVERSION["Popular Visualisation Pseudo-Mercator",  
+	            ID["EPSG",1024]],  
+	        PARAMETER["Latitude of natural origin",0,  
+	            ANGLEUNIT["degree",0.0174532925199433],  
+	            ID["EPSG",8801]],  
+	        PARAMETER["Longitude of natural origin",0,  
+	            ANGLEUNIT["degree",0.0174532925199433],  
+	            ID["EPSG",8802]],  
+	        PARAMETER["False easting",0,  
+	            LENGTHUNIT["metre",1],  
+	            ID["EPSG",8806]],  
+	        PARAMETER["False northing",0,  
+	            LENGTHUNIT["metre",1],  
+	            ID["EPSG",8807]]],
+	    CS[Cartesian,2],  
+	        AXIS["easting (X)",east,  
+	            ORDER[1],  
+	            LENGTHUNIT["metre",1]],  
+	        AXIS["northing (Y)",north,  
+	            ORDER[2],  
+	            LENGTHUNIT["metre",1]],  
+	------------------------------------------------------------
+	BLOCK #3 : USAGE DOCUMENTATION
+	------------------------------------------------------------
+	    USAGE[  
+	        SCOPE["Web mapping and visualisation."],  
+	        AREA["World between 85.06°S and 85.06°N."],  
+	        BBOX[-85.06,-180,85.06,180]],  
+	    ID["EPSG",3857]]
+
+
 
 Without going much details, let's simply observe:
 
