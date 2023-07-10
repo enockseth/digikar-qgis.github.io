@@ -1,8 +1,6 @@
 # 2. Georefencing historical maps
-
 # A. Preliminary steps
-
-1. Download the data for this tutorial (⚠️~1.6Gb): [https://www.swisstransfer.com/d/d9b7b3c8-8c4a-4b7d-b988-acd20da73d69](https://www.swisstransfer.com/d/d9b7b3c8-8c4a-4b7d-b988-acd20da73d69)
+1. Download the data for this tutorial (⚠️~1.6Gb): https://www.swisstransfer.com/d/d9b7b3c8-8c4a-4b7d-b988-acd20da73d69
 2. Extract the zip archive to your working directory.
 3. Open the preconfigured QGIS project  `Tutorial_2/project.QGZ`
 4. Select a *MeilenBlatt* to georeference in the list available in the layer `georeferencing_index`. **Each participant should chose a different sheet**.
@@ -46,26 +44,26 @@ Furthermore, when dealing with maps composed of multiple sheets, such as the _Me
 
 In soùme cases, maps like the Meilenblätter include a cartographic grid with well-documented parameters such as its resolution, dimensions, and orientation, which allows for its reconstruction in the geographic reference system.
 
-A commonly employed and effective approach is to define GCPs on this reconstructed grid. This approach ensures that the georeferenced sheets align correctly with each other. It also helps prevent interpretation errors regarding the correspondence between GCPs placed on different geographic entities. This method provides a robust solution while maintaining accuracy during the georeferencing process.
+A common and effective approach is to define GCPs on this reconstructed grid. This approach ensures that the georeferenced sheets align correctly with each other. It also helps prevent interpretation errors regarding the correspondence between GCPs placed on different geographic entities. This method provides a robust solution while maintaining accuracy during the georeferencing process.
 
 ## b. GCP-based georeferencing on the *Meilenblätter* grid
 
 > 🛠️
 
 1. Open the QGIS georeferencer from the menu `Layer->Georeferencer`.
-2. Click on ![[Pasted image 20230705182811.png]] to load the the original, non-georeferenced *Meilenblatt* .
-3. Use the `Add Point` tool ![[Pasted image 20230705183013.png]] to define GCPs on each corner of the sheet, both in the image view and the map view, using the recreated grid `georeferencing_index`.
+2. Click on ![](attachments/Pasted%20image%2020230705182811.png) to load the the original, non-georeferenced *Meilenblatt* .
+3. Use the `Add Point` tool ![](attachments/Pasted%20image%2020230705183013.png) to define GCPs on each corner of the sheet, both in the image view and the map view, using the recreated grid `georeferencing_index`.
 ![[Pasted image 20230705184245.png]]
-4. Save the GCPs in  `Tutorial_2/output/d_{sheet_number}.png.points` using ![[Pasted image 20230705184956.png]] (or from `File->Save GCP Points as...`)
-5. Next, click on `Transformation Settings` ![[Pasted image 20230705184409.png]] to access the settings for the transformation. Here, you can specify the type of transformation method to be applied and the target Coordinate Reference System (CRS), among other options.
+4. Save the GCPs in  `Tutorial_2/output/d_{sheet_number}.png.points` using ![](attachments/Pasted%20image%2020230705184956.png) (or from `File->Save GCP Points as...`)
+5. Next, click on `Transformation Settings` ![](attachments/Pasted%20image%2020230705184409.png) to access the settings for the transformation. Here, you can specify the type of transformation method to be applied and the target Coordinate Reference System (CRS), among other options.
 To ensure the corners of the image match precisely, select "Thin Plate Spline" as the transform type and set the target CRS to `EPSG:3398 (RD/83 / 3-degree Gauss-Kruger zone 4)`.
 
 6. Save the georeferenced image as `Tutorial_2/output/d_{sheet_number}_georeferenced_grid.tif` and keep the resampling method unchanged:
-![[Pasted image 20230705184913.png]]
+![](attachments/Pasted%20image%2020230705184913.png)
 
-7. Click `OK` to confirm the settings and initiate the georeferencing process by clicking the button ![[Pasted image 20230705185320.png]]. The georeferenced sheet should then be automatically loaded into the project.
+7. Click `OK` to confirm the settings and initiate the georeferencing process by clicking the button !![](attachments/Pasted%20image%2020230705185320.png). The georeferenced sheet should then be automatically loaded into the project.
 
-8. Click `OK` and run the georefencing with the button![[Pasted image 20230705185320.png]]. The georeferenced sheet should be automatically loaded into the project.
+8. Click `OK` and run the georefencing with the button![](attachments/Pasted%20image%2020230705185320.png). The georeferenced sheet should be automatically loaded into the project.
 9. Notice how the georeferenced sheet does not align well with the HOV places or the OSM basemap. This is the result of two factors: the imperfect accuracy of the grid and the inherent spatial inaccuracies within the *Meilenblätter*. To achieve a more accurate georeferencing of the map content, we need to locally warp it. This can be accomplished by adding GCPs directly onto the geographic entities depicted in the map.
 
 # D. Georeferencing with ground control points: GCPs on persistent entities
@@ -76,14 +74,15 @@ This time we will use the OSM basemap as the reference.
 
 > 🛠️
 
-1. Open the georeferencer and load the original sheet image once again. Import the grid GCPs that were previously defined using the button ![[Pasted image 20230705190605.png]]. 
+1. Open the georeferencer and load the original sheet image once again. Import the grid GCPs that were previously defined using the button ![](attachments/Pasted%20image%2020230705190605.png). 
 2. Look for entities that are depicted both in the OSM reference map and in the sheet, i.e. entities in the _Meilenblatt_ that still exist today. The best candidates for GCPs are **churches** since they were commonly used as reference points during the topographic survey of the _Meilenblätter_.
 
 > ℹ️ There is no golden rule on the placement strategy for GCPs as it varies depending on the specific map being processed. However, there are some best practices that can help achieve higher-quality georeferencing:
 - The more GCPs, the better, but it's preferable to have a few reliable points rather than many questionable ones.
 - Aim to cover the entire sheet with GCPs. Since the geometric transformation relies solely on the information provided by the GCPs, it's best to avoid leaving large areas of the sheet empty of GCPs to prevent dramatic distortions in those areas.
 - Tall and compact structures such as churches, bell towers, and castles are excellent candidates for GCPs. They were often used as triangulation points during the topographic survey of historical maps, making their positions on the map more accurate and reliable compared to features like roads or mountain summits.
-![[Pasted image 20230705191553.png|300]] ![[Pasted image 20230705191606.png|300]]
+![](attachments/Pasted%20image%2020230705191553.png)
+![](attachments/Pasted%20image%2020230705191606.png)
 <small>Figure: The same church depicted in a Meilenblatt and on OSM. The point is the location of that place regirstered in the HOV.</small>
 
 3. Once you have added a reasonable number of control points, run a new georefenrencing using the same transformation as before. Save the georeferenced image as `Tutorial_2/output/d_{sheet_number}_georeferenced_dense.tif`.
