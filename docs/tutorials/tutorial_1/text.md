@@ -1,9 +1,6 @@
 # 1. Getting started with QGIS
 
-# Introduction
 This tutorial is a step-by-step introduction to QGIS, from discovering the GUI to geospatial processing, through a series of practical exercises based on the geohistorical data leveraged in the DigiKAR project.
-
-With this first session you will also create and configure the QGIS project file that will be used during the two days and import all the useful data.
 
 A set of icons is used to highlight the nature of specific blocks or sections:
 - ⚠️ and ❗ denote an important information;
@@ -30,8 +27,10 @@ Lastly, apologies for all the *frenchisms* in the text 🙂
 
 # A. Preliminary steps
 
-
-## b. Creating a new QGIS project 
+## a. Setting up the working directory
+1. Create a new folder in the location of your choice to store the material and projects of the next tutorials. This folder will be your working directory.
+2. Download the data for this tutorial (~1.5Mb): [https://www.swisstransfer.com/d/64cf26cf-2824-4ae0-9dbe-be09ff12a4f5](https://www.swisstransfer.com/d/64cf26cf-2824-4ae0-9dbe-be09ff12a4f5)
+3. Extract the zip archive to your working directory.## b. Creating a new QGIS project 
 Before starting to experiment with the GUI, let's start by creating a project to hold all the data and configuration of the tutorials.
 
 On start-up, QGIS is initialized with an empty project, labelled `Untilted Project`.
@@ -249,10 +248,10 @@ In (2), take a look at the `WKT` property, which provides the structured definit
 
 Without going much details, let's simply observe:
 
-- [Block #0] This is a **PROJ[ected]CRS**, meaning it is a CRS with a cartographic projection. With this CRS, the coordinates are in 2 dimensions on a plane! On the other hand, **GEOG[raphic]CRS**, such as the previous `WGS 84` (EPSG:4326), do not carry a map projection; Corodinates in such CRSs are expressed in latitude and longitude. 
-- [Block #1] This CRS is based on a 3D model of the Earth defined in the CRS `WGS 84`  (EPSG:4326), which contains an ellipsoidal approximation the true shape of the Earth.
-- [Block #2] This CRS projects the geographic coordinates on a plane using a mathematical transformation. The parameters for this transformation are described in this block.
-- [Block #3] Lastly, Block #3 describes the extent to which this CRS is valid, ensuring it is not too imprecise for a particular region of the Earth.
+- Block #0: This is a **PROJ[ected]CRS**, meaning it is a CRS with a cartographic projection. With this CRS, the coordinates are in 2 dimensions on a plane! On the other hand, **GEOG[raphic]CRS**, such as the previous `WGS 84` (EPSG:4326), do not carry a map projection; Corodinates in such CRSs are expressed in latitude and longitude. 
+- Block #1: This CRS is based on a 3D model of the Earth defined in the CRS `WGS 84`  (EPSG:4326), which contains an ellipsoidal approximation the true shape of the Earth.
+- Block #2: This CRS projects the geographic coordinates on a plane using a mathematical transformation. The parameters for this transformation are described in this block.
+- Block #3: Lastly, Block #3 describes the extent to which this CRS is valid, ensuring it is not too imprecise for a particular region of the Earth.
 
 >ℹ️  When using a GEOGCRS like  `WGS 84` (EPSG:4326), QGIS arbitrarily uses an Equirectangular projection when such a CRS is used. This is why, at start, QGIS showed geographic coordinates and displayed a very stretched OSM map.
 

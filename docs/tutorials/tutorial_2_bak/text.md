@@ -2,11 +2,10 @@
 
 # A. Preliminary steps
 
-1. Download the data for this tutorial (⚠️~1.6Gb): [https://www.swisstransfer.com/d/d9b7b3c8-8c4a-4b7d-b988-acd20da73d69](https://www.swisstransfer.com/d/d9b7b3c8-8c4a-4b7d-b988-acd20da73d69)
-2. Extract the zip archive to your working directory.
-3. Open the preconfigured QGIS project  `Tutorial_2/project.QGZ`
-4. Select a *MeilenBlatt* to georeference in the list available in the layer `georeferencing_index`. **Each participant should chose a different sheet**.
-5. In QGIS, enable automatic snapping from `Project->Snapping options...`. Toggle ![[Pasted image 20230705183316.png]] and keep the default options:
+1. Copy the folder `Tutorial_2` to your working directory.
+2. Open the preconfigured QGIS project `Tutorial_2/project.QGZ`
+3. Select a *MeilenBlatt* to georeference in the list available in the layer `georeferencing_index`. **Each participant should chose a different sheet**.
+4. In QGIS, enable automatic snapping from `Project->Snapping options...`. Toggle ![[Pasted image 20230705183316.png]] and keep the default options:
 ![test](attachments/Pasted image 20230705183425.png)
 This will make the cursor automatically *snap* to the closest vertex in the vector layers during coordinate capture.
 
@@ -92,31 +91,3 @@ This time we will use the OSM basemap as the reference.
 
 4. Finally, save the GCPs as `Tutorial_2/output/d_{sheet_number}_dense_.png.points`.
 5. Compare the three different georeferencings visually and observe the effects of the warping on the resulting map, particularly on the edges of the sheet.
-
-# E. Clipping the georeferenced raster
-
-You've certainly noticed that the sheet is framed by a black border that contains no cartographic information and that overlaps with adjacent sheets
-
-![](attachments/Pasted%20image%2020230709140813.png)
-
-It would be better to remove this border and clip the georeferenced raster so that it fits into its corresponding grid tile.
-
-The vector grids `grid_sheets` and `georeferencing_index` have been designed so that each tile is a polygon. We're going to reuse the tile polygone as a mask shape to clip the georeferenced sheet.
-
-1. 1. First, we need to isolate the tile corresponding to the sheet into a separate layer. Hide the georeferenced sheet  by unchecking it in the Layer Pane si the the tile in `georeferencing_index` becomes visible. Select this layer in the Layer Pane, then with the map tool `entity selection` ![](attachments/Pasted%20image%2020230709141322.png)  click on the tile to select it. 
-![](attachments/Pasted%20image%2020230709144216.png)
-3. Hit `CRTL+C` or go to `Edit->Copy entities` to copy the selected tile polygon.
-4. Then,  go to  `Edit->Paste entitie as...-> New Vector Layer` to paste the polygon to a new layer and save it  as a GeoJSON  file to `Tutorial 2/output/mask.geosjon`. The resulting layer, containing only the copy-pasted tile, should be automatically loaded to QGIS as a new layer named `mask`.
-5. Now go to the menu `Raster->Extraction->Clip vector layer by mask layer` and configure clipping as below. Don't forget to check "Create an output alpha band" so that clipped borders are transparent.
-![](attachments/Pasted%20image%2020230709142426.png)
-5. This will create a new georeferenced TIF file. Choose to save it as `Tutorial 2/output/d_{sheet_number}_georeferenced_clipped.tif`, and click `Run`.
-6. The final map, georeferenced and without black borders, should now be displayed in QGIS:
-![](attachments/Pasted%20image%2020230709142949.png)
-
-
-
-<center>This ends the tutorial on georeferencing in QGIS !</center>
-
-Please do no delete the files `d_{sheet_number}_georeferenced_clipped.tif` and `d_{sheet_number}_georeferenced_clipped.tif`  . 
-We'll collect them at the end of the session to create a single georeferenced map based on everyone's contributions.
-Thank you !
