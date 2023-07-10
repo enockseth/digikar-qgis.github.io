@@ -3,6 +3,7 @@
 This tutorial is a step-by-step introduction to QGIS, from discovering the GUI to geospatial processing, through a series of practical exercises based on the geohistorical data leveraged in the DigiKAR project.
 
 A set of icons is used to highlight the nature of specific blocks or sections:
+
 - ⚠️ and ❗ denote an important information;
 - ℹ️ is used for optional info or details on a specific point.
 - 🛠️ marks the beginning of an "exercise". Now it's your turn!
@@ -15,6 +16,7 @@ However, if you installed QGIS in German and wish to temporarily switch to Engli
 QGIS must be restarted for changes to take effect.
 
 >❗ **REMINDERS**
+
 >1. Save your QGIS project **regularly**, the software might not be super stable on your computer, especially if your OS is Windows !
 >2. When editing vector data, don't forget to save the layer also **regularly** !
 >3. Be carefull with character encoding on Windows when loading geodata from local files, as the default encoding is usually not `UTF-8` on this OS. Similar issues may or may not occur on MacOS...
@@ -61,6 +63,7 @@ The actual data may be stored locally in separate files, or may come from remote
 This is the interface you should be seeing now:
 
 The main GUI layout is composed of 3 types of visual components:
+
 - **Menus**, which provide hierarchical access to QGIS functions, options and preferences;
 - **Panes**, to display data in different ways, including the main map view.
 - **Toolbars**, that are visual shortcuts to all features found in the menus.
@@ -88,7 +91,7 @@ The `QuickMapServices` plugin is now accessible from the QGIS main menu, in `Web
 
 In `QuickMapServices`, select `OSM->OSM Standard` to load the standard OSM basemap into the project.
 
->ℹ️ QGIS comes with over 1,000 plugins for all kinds of uses, so feel free to explore https://plugins.qgis.org/! Please note that some plugins, although open-source, serve as access points to commercial APIs (e.g. MapTiler).
+>ℹ️ QGIS comes with over 1,000 plugins for all kinds of uses, so feel free to explore [https://plugins.qgis.org/](https://plugins.qgis.org/)! Please note that some plugins, although open-source, serve as access points to commercial APIs (e.g. MapTiler).
 
 ---
 
@@ -99,7 +102,7 @@ In `QuickMapServices`, click `OSM->OSM Standard` to load the default OpenStreetM
 ![](attachments/maposm%201.png)
 >ℹ️  The map may not have the same shape as in the figure above; it depends on the default cartographic projection used in your QGIS.
 
-Let's explore some the most important components of the QGIS GUI: the map navigation tools (1), the map view (2), and the Layers pane (3).
+Let's explore some of the most important components of the QGIS GUI: the map navigation tools (1), the map view (2), and the Layers pane (3).
 
 The **Map navigation tools (1)** take up a small part of the QGIS toolbar, usually in the top left. 
 They are used to navigate within the map view (2) in various ways.
@@ -107,7 +110,7 @@ They are used to navigate within the map view (2) in various ways.
 >ℹ️ Feel free to hover your mouse over the different tools to display their tooltips!
 
 Most QGIS map tools work in a similar way. Clicking on a tool **activates** it, wich often makes the mouse cursor to change accordingly.
-The cool can then be **used** on the map view (2). In some cases, clicking on the tool icon immediately triggers an action, such as `Zoom Full`, which zooms to the extent of all currently mapped data.
+The tool can then be **used** on the map view (2). In some cases, clicking on the tool icon immediately triggers an action, such as `Zoom Full`, which zooms to the extent of all currently mapped data.
 
 Note that the OSM basemap also appears in the  **Layers (3)** pane. If you uncheck the box next to `OSM Standard`, it will hide that layer in the map view.
 
@@ -115,12 +118,12 @@ Note that the OSM basemap also appears in the  **Layers (3)** pane. If you unche
 
 > 🛠️
 
-Use the `Pan` and `Zoom` tools on the **map view (2)** to roughly position yourself over Saxony. :info: With the `Zoom` tool, you can draw a rectangle on the map to easily zoom to a specific area. ![[attachments/view_sachsen_wgs84.png]]
+Use the `Pan` and `Zoom` tools on the **map view (2)** to roughly position yourself over Saxony. :info: With the `Zoom` tool, you can draw a rectangle on the map to easily zoom to a specific area. ![](attachments/view_sachsen_wgs84.png)
 
->ℹ️  You can set the map view to a specific scale by editing the Scale value in the QGIS footbar. For instance, set the scale to 1:500,000. ![[attachments/footbar.png]]
+>ℹ️  You can set the map view to a specific scale by editing the Scale value in the QGIS footbar. For instance, set the scale to 1:500,000. ![](attachments/footbar.png)
 
 
-![](attachments/Pasted%20image%2020230706150030.png)  Now it's time to save the project state. Go to the `Project->Save` menu, press `CTRL+S`, or use the `floppy disk` tool ![[attachments/save_icon.png|100]]. Saving the QGIS project stores the scale and position of the view, so every time you reopen the project, you will be in the same place.
+![](attachments/Pasted%20image%2020230706150030.png)  Now it's time to save the project state. Go to the `Project->Save` menu, press `CTRL+S`, or use the `floppy disk` tool ![](attachments/save_icon.png|100). Saving the QGIS project stores the scale and position of the view, so every time you reopen the project, you will be in the same place.
 
 ---
 
@@ -132,14 +135,14 @@ Let's take a moment to delve into this topic.
 
 ### a. Map projections
 
-> Map projections try to portray the surface of the earth, or a portion of the earth, on a flat piece of paper or computer screen. In layman’s term, map projections try to transform the earth from its spherical shape (3D) to a planar shape (2D).<small>https://docs.qgis.org/3.28/en/docs/gentle_gis_introduction/coordinate_reference_systems.html</small>
+> Map projections try to portray the surface of the earth, or a portion of the earth, on a flat piece of paper or computer screen. In layman’s term, map projections try to transform the earth from its spherical shape (3D) to a planar shape (2D). <small>[https://docs.qgis.org/3.28/en/docs/gentle_gis_introduction/coordinate_reference_systems.html](https://docs.qgis.org/3.28/en/docs/gentle_gis_introduction/coordinate_reference_systems.html)</small>
 
 Like any GIS, QGIS displays data on a map that is geolocated on the Earth's surface using coordinates. For example, the `OSM Standard` basemap provided by OpenStreetMap is made of thousand of small tiles, each one associated with geographic coordinates.
 
 You can easily observe this by moving the mouse cursor over the map view while looking at the status bar. You will notice that the cursor position is displayed in the `Coordinate` section as latitude and longitude:
 ![](attachments/coordinates.png)
 
-Indeed, latitude and longitude are positions on the surface of a spherical or ellipsoïdal model of the Earth. However, QGIS is made for 2 dimensional cartography and is unable to show a 3D representation of the Earth.
+Indeed, latitude and longitude are positions on the surface of a spherical or ellipsoidal model of the Earth. However, QGIS is made for 2 dimensional cartography and is unable to show a 3D representation of the Earth.
 
 **Map projections** are mathematical transformations that "unfold" the Earth's surface onto a flat plane while preserving some geometric properties of the terrain, either distances, angles, or shapes.
 
@@ -147,21 +150,21 @@ However, this process is not without consequences, similar to trying to flatten 
 Flattening a sphere can only be done at the expense of distortions, and map projections cannot simultaneously preserve distances, angles, and areas all together.
 
 ![](attachments/map_projection.png)
-For more information about map projections, see https://gisgeography.com/map-projections/
+For more information about map projections, see [https://gisgeography.com/map-projections/](https://gisgeography.com/map-projections/)
 
 
 Numerous map projections are available in QGIS, each with its own geometric properties, pros and cons, area of use, etc. 
 Choosing a projection depends on the purpose of the map, its scale, the area to cartography and the use case.
-However, the Robinson and Mercator projections are dominant nowadays for small scale cartography (i.e. large areas) is . Mercator is typically used for world maps. Webmapping applications most often use a simplified version of this projection, called Pseudo-Mercator because it relies on a spherical model of the Earth instead of an ellipsoïdal one..
+However, the Robinson and Mercator projections are dominant nowadays for small scale cartography (i.e. large areas). Mercator is typically used for world maps. Webmapping applications most often use a simplified version of this projection, called Pseudo-Mercator because it relies on a spherical model of the Earth instead of an ellipsoidal one..
 
 
 In the current project, QGIS is using a cartographic projection named **[Equirectangular or Plate-Carrée**](https://en.wikipedia.org/wiki/Equirectangular_projection) to display the Earth sphere on a 2 dimensional plane.
 
-You can play around with the demo below (https://www.jasondavies.com/maps/transition/) to see how different cartographic projections distort the shape of the Earth. Choose `Equirectangular (Plate-Carrée)` in the demo to visualize the projection currently used by QGIS.
+You can play around with the demo below [https://www.jasondavies.com/maps/transition/](https://www.jasondavies.com/maps/transition/) to see how different cartographic projections distort the shape of the Earth. Choose `Equirectangular (Plate-Carrée)` in the demo to visualize the projection currently used by QGIS.
 
 ![](attachments/plate_carree.png)
 
-As you may notice in the demo or on the map displayed in QGIS, the higher the latitudethe more horizontally stretched is the map.
+As you may notice in the demo or on the map displayed in QGIS, the higher the latitude the more horizontally stretched is the map.
 Indeed, the Plate-Carrée projection is not suited for Europe and even less for a "relatively" small area like Germany/Saxony.
 However, there are other projections available, integrated into what is known as _Coordinate Reference Systems_ (CRS). 
 
@@ -176,7 +179,7 @@ Notice the code `EPSG:4326` in the bottom right of the footbar of QGIS:
 ![](attachments/icon_crs.png)
 
 Click on this code to open the `CRS` tab in the project properties.
-![[attachments/view_crs.png|700]]
+![](attachments/view_crs.png)
 
 Let's take a closer look at points (1) and (2) from the figure above.
 
@@ -249,7 +252,7 @@ In (2), take a look at the `WKT` property, which provides the structured definit
 Without going much details, let's simply observe:
 
 - Block #0: This is a **PROJ[ected]CRS**, meaning it is a CRS with a cartographic projection. With this CRS, the coordinates are in 2 dimensions on a plane! On the other hand, **GEOG[raphic]CRS**, such as the previous `WGS 84` (EPSG:4326), do not carry a map projection; Corodinates in such CRSs are expressed in latitude and longitude. 
-- Block #1: This CRS is based on a 3D model of the Earth defined in the CRS `WGS 84`  (EPSG:4326), which contains an ellipsoidal approximation the true shape of the Earth.
+- Block #1: This CRS is based on a 3D model of the Earth defined in the CRS `WGS 84`  (EPSG:4326), which contains an ellipsoidal approximation of the true shape of the Earth.
 - Block #2: This CRS projects the geographic coordinates on a plane using a mathematical transformation. The parameters for this transformation are described in this block.
 - Block #3: Lastly, Block #3 describes the extent to which this CRS is valid, ensuring it is not too imprecise for a particular region of the Earth.
 
@@ -296,7 +299,7 @@ Now that we have covered the basics of the QGIS interface and map projections, l
 
 ### a. Adding the Meilenbmätter von Sachsen from a remote Web Map Service
 
-[**Web Map Service**](https://www.ogc.org/standard/wms/) (WMS) is a standard protocol published by the [Open Geospatial Consortium](https://www.ogc.org/  for delivering georeferenced maps over the web as data streams.
+[**Web Map Service**](https://www.ogc.org/standard/wms/) (WMS) is a standard protocol published by the [Open Geospatial Consortium](https://www.ogc.org/)  for delivering georeferenced maps over the web as data streams.
 With WMS, you can share and load georeferenced map images that would largely exceed the capabilities of mainstream computers.
 
 The _Hochschule für Technik und Wirtschaft Dresden_ has published as a WMS the largest historical map of Saxony made from high resolution digisations of the ~300 [_Meilenblätter von Sachsen_](https://de.wikipedia.org/wiki/Meilenbl%C3%A4tter_von_Sachsen).
@@ -329,7 +332,7 @@ Check that the *coordinate reference system* selected for this layer is indeed `
 ![](attachments/view_meilenblatter.png)
 
 
->ℹ️ If the Meilenblätter layer appear in the Layers panel but is not visible on the map vie, you can force QGIS to zoom to the layer. Select the layer  `Meilenblätter` in the Layers panel, then clicking the map tool `Zoom to Layer` in the QGIS main toolbar.
+>ℹ️ If the Meilenblätter layer appear in the Layers panel but is not visible on the map view, you can force QGIS to zoom to the layer. Select the layer  `Meilenblätter` in the Layers panel, then clicking the map tool `Zoom to Layer` in the QGIS main toolbar.
 
 >ℹ️ The arrangement of the layers in the Layers panel reflects the order in which they are displayed in the map view, in descending order. Therefore, one layer *below* another in the layers panel is also displayed *below* the other in the map view. 
 >You can change this order very easily by  moving the layers with a simple drag and drop in the Layers panel.
@@ -354,7 +357,7 @@ In fact, QGIS can actually process an Excel spreadsheet as if it were a set of v
 ---
 > 🛠️
 
-Let's try this with the file `Tutorial_1/data/hov_places.csv`. The extension `.csv` is short for Comma Separate Values,  a very simple text-based datatable format where cells are separated by a special character. CSV are typically created from spreadsheet programs such as Excel or LibreOffice Calc.
+Let's try this with the file `Tutorial_1/data/hov_places.csv`. The extension `.csv` is short for Comma Separated Values,  a very simple text-based datatable format where cells are separated by a special character. CSV are typically created from spreadsheet programs such as Excel or LibreOffice Calc.
 
 >ℹ️  If you open this file in Open/LibreOffice Calc or Excel (in Excel you may have to go to the tab `Data` and select `from text` ), or in any other text editor, you will see that each line corresponds to a named place and that it contains two columns named `lon[gitute]` and `lat[itude]` containing the point coordinates of this place.
 
@@ -407,7 +410,7 @@ The layer should be added to the map and visible to the North of Zwickau:
 
 ![](attachments/all_vector_data_loaded%201.png)
 
->ℹ️ Of the 4 layers opened, 2 are stored in the cloud (OSM and the Meilenblätter), and 2 were imported from local files. Because the reference to tghe layer sources (WMS URLs or file paths) are saved in the project file, all layers will be loaded automatically.
+>ℹ️ Of the 4 layers opened, 2 are stored in the cloud (OSM and the Meilenblätter), and 2 were imported from local files. Because the reference to the layer sources (WMS URLs or file paths) are saved in the project file, all layers will be loaded automatically.
 >However, the data is **never actually stored in the project file**, but is simply loaded when the project is opened. So, if you want to copy your QGIS to another computer, or create a nackup, do not forget to **copy the data files along with the QGIS project file**.
 
 ![](attachments/Pasted%20image%2020230706150030.png) **Don't forget to save the project !**
@@ -440,6 +443,7 @@ This will unlock all the labeling options for the `hov_places` layer:
 First, select the data field to be used as the label (1): **Ortsname**.
 
 Using the various tabs in the panel (2), create the labels:
+
 - in Arial font, bold, size 3.5 millimetres
 - surrounded by a 1 millimetre white buffer
 - placed around the point at a distance of 0.5 millimetres
@@ -477,12 +481,13 @@ You can now finely adjust the symbolisation of each category by selecting each l
 
 Create a specific style for the `Strasse` category. 
 Let's recreate the style of the roads depicted on the Meilenblätter in the area covered by the vector network
-![[attachments/network_strasse_legend.png|500]]
+![](attachments/network_strasse_legend.png)
 
 The symbol is a double red line, one side solid and the other dashed, with an orange background.
 
 To do this, in the `Symbol Selector` window in the *Strasse* category, you can stack strokes symbols and use the `offset` parameter to create different borders. 
 For example:
+
 1. A solid `Simple Line` of width 1.5 mm, coloured in semi-transparent orange...
 2. ...overlayed by a second `Simple Line` , dashed, of width 0.5mm, with an offset of 0.8mm.
 3. ...overlayed by a third `Simple Line` , solid, also of width 0.5mm, with an offset of -0.8mm.
@@ -512,7 +517,7 @@ In this section, we're going to compute and map the area that could be covered b
 
 >❗ Obviously, this is only a learning exercise with no scientific ambition. In order for the result to be more realistic, much more information would be needed: the full fine-grained raod network (footpaths are missing, the network storps at the map limits, ...), the DEM to determine the elevation of each road, and so on.
 
-Let's proceed in several steps that build on eachother.
+Let's proceed in several steps that build on each other.
 
 
 ## a. Step #1:  Computing the network accessibility from a given point
@@ -524,7 +529,7 @@ The one we're interested in is `Service Area (from point)` available in the cate
 Double-click on the processing to open its settings window.
 ![](attachments/processing_1.png)
 
->ℹ️   For more details about the Network Analysis tools,  check the doc : https://docs.qgis.org/3.28/en/docs/user_manual/processing_algs/qgis/networkanalysis.html
+>ℹ️   For more details about the Network Analysis tools,  check the doc : [https://docs.qgis.org/3.28/en/docs/user_manual/processing_algs/qgis/networkanalysis.html](https://docs.qgis.org/3.28/en/docs/user_manual/processing_algs/qgis/networkanalysis.html)
 
 Let's take a closer look at the prameters required by the `Service Area` processing:
 ![](attachments/processing_2.png)
