@@ -22,7 +22,7 @@
 [https://www.swisstransfer.com/d/c36a7046-2d38-4ee6-8d8e-245c37cad77b](https://www.swisstransfer.com/d/c36a7046-2d38-4ee6-8d8e-245c37cad77b) (200Kb)
 
 ## 🗨️ Slides
-[https://www.swisstransfer.com/d/b5475118-241a-4fc4-a120-60a72e56cc27](https://www.swisstransfer.com/d/b5475118-241a-4fc4-a120-60a72e56cc27) (4Mb)
+[https://www.swisstransfer.com/d/13a8a52c-0428-4cfa-befa-5e6fe0effb49](https://www.swisstransfer.com/d/13a8a52c-0428-4cfa-befa-5e6fe0effb49) (4Mb)
 
 ## 🗺️ Meilenblätter extract on the DigiKAR case study areas
 [https://www.swisstransfer.com/d/92437285-5a84-41c6-8a50-0de161539866](https://www.swisstransfer.com/d/92437285-5a84-41c6-8a50-0de161539866)   **(⚠️ 30Gb)**
