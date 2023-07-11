@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Bertrand Duménieu" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>3. Introduction to vectorisation in QGIS - DigiKAR QGIS tutorial</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../stylesheets/extra.css" rel="stylesheet" />
+    
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "3. Introduction to vectorisation in QGIS";
+        var mkdocs_page_input_path = "tutorials/tutorial_3/text.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+ 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> DigiKAR QGIS tutorial
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">DigiKAR QGIS hands-on session, 11-12 July 2023</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../programme/">Programme</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorial_1/text/">1. Getting started with QGIS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorial_2/text/">2. Georefencing historical maps</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">More information</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../contact/">Contact</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">DigiKAR QGIS tutorial</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li>3. Introduction to vectorisation in QGIS</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/digikar-qgis/digikar-qgis.github.io/edit/main/docs/tutorials/tutorial_3/text.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="3-introduction-to-vectorisation-in-qgis">3. Introduction to vectorisation in QGIS</h1>
+<p>This short tutorial is a  introduction to the basics of vectorisation in QGIS with very simple data. The goal is to manually capture the mills and calvaries that are pictured on the Meilenblätter with dedicated symbols:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../attachments/Pasted%20image%2020230709195736.png" /> <img alt="" src="../attachments/Pasted%20image%2020230709200205.png" /></td>
+<td>Mühle: symbol of a waterwheel or a windmill</td>
+</tr>
+<tr>
+<td><img alt="" src="../attachments/Pasted%20image%2020230709200416.png" /></td>
+<td>Kreuzweg: black cross often at crossroads.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="a-preliminary-steps">A. Preliminary steps</h1>
+<ol>
+<li>Download the data for this tutorial (~200Kb): https://www.swisstransfer.com/d/24a42765-42ac-49a1-83f2-5c8b6cf04e82</li>
+<li>Extract the zip archive to your working directory.</li>
+<li>If needed, copy the folder <code>Tutorial_3</code> to your working directory.</li>
+<li>Open the QGIS project <code>Tutorial_3/project.QGZ</code></li>
+</ol>
+<h1 id="b-creation-of-a-new-vector-layer">B. Creation of a new vector layer</h1>
+<ol>
+<li>Create a new point layer from <code>Layer-&gt;Create Layer-&gt;New Temporary Scratch Layer</code>. Create a layer named "Point places" composed of point entities whose coordinates are in the CRS EPSG:3398. This layer should also include a field for categorizing the point place. Follow the instructions in the figure below:
+<img alt="" src="../attachments/Pasted%20image%2020230709191223.png" /></li>
+<li>At the moment, the layer is only temporary and stored in RAM, as shown by the chipset icon next to the layer name: <img alt="" src="../attachments/Pasted%20image%2020230709191715.png" />. Save this layer as a GEOJSON file in the <code>Tutorial_3/output</code> folder under the name <code>meilenblaetter_pointplaces.geojson</code>. Once saved, the file will be automatically opened by QGIS. You can safely delete the temporary layer (<code>right click-&gt;Remove Layer</code>).</li>
+</ol>
+<h1 id="c-getting-started-with-vectorisation">C. Getting started with vectorisation</h1>
+<p>Dans QGIS, toutes les couches sont par défaut en lecture seule.Pour que leur modification soit possible, il faut d'abord toggle le mode édition.</p>
+<ol>
+<li>Activate edit mode for the <code>Point places</code> layer: Select it in the Layer Pane, then <code>Right click-&gt;Toggle editing</code> or click on the <img alt="" src="../attachments/Pasted%20image%2020230709192801.png" /> icon in the QGIS toolbar. A small pencil icon in front of the layer name in the Layer Pane indicates that the layer is in "write mode": <img alt="" src="../attachments/Pasted%20image%2020230709192901.png" /></li>
+<li>In the QGIS toolbar, activate the map tool <code>Add Point Feature</code> and add a point anywhere on the map (don't worry, this is just a test!). This should open a pop-up form to fill in the attributes of the point feature just created. You can see that it's a free text field, defaulting to NULL. Not a very satisfying form! Let's see how we can improve it. Click <code>Cancel</code> to cancel entity creation. 
+<img alt="" src="../attachments/Pasted%20image%2020230709193223.png" />. </li>
+<li>Open the <code>Point places</code> layer properties (<code>Right click-&gt;Properties</code>) and look for the <code>Attribute Form</code> tab.  We're going to configure the input form ourselves. Change the form type value from <code>Autogenerate</code> to <code>Drag and Drop Designer</code>. This opens an editor that lets you compose an form by simply dragging and dropping from the left-hand column <code>Available Widgets</code> to the right-hand column <code>Form Layout</code>.</li>
+<li>The field <code>placetype</code> should be in the <code>Form Layout</code> column by default. Select the field to configure it in detail, so that:<ul>
+<li>Its display alias should be "Place type (according to the map)".</li>
+<li>The widget is a combo box (i.e. Value Map) with two possible values:</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mühle</td>
+<td>Mühle: symbol of a waterwheel or a windmill</td>
+</tr>
+<tr>
+<td>Kreuzweg</td>
+<td>Kreuzweg: black cross often at crossroads.</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="../attachments/Pasted%20image%2020230709202533.png" /></p>
+<p>If you try to create a point again, the form is updated with your settings:</p>
+<p><img alt="" src="../attachments/Pasted%20image%2020230709194944.png" /></p>
+<ol>
+<li>
+<p>Save the project <img alt="" src="../attachments/Pasted%20image%2020230709200831.png" /> . The custom form will be stored in the QGZ file.</p>
+</li>
+<li>
+<p>Try to find at least one mill and one calvary inside the <code>Case study areas</code> ! </p>
+</li>
+</ol>
+<blockquote>
+<p>ℹ️ Mills can be found in the "Schönburgische herrschaften" and  "Bautzener Kreis" region. Calvaries/"Kreuzwegs" are scattered across the "Bautzener Kreis" region.</p>
+</blockquote>
+<ol>
+<li>Regularly save your edits, either by:<ul>
+<li>untoggling the <code>edit mode</code> <img alt="" src="../attachments/Pasted%20image%2020230709200940.png" /> to force saving</li>
+<li>or clicking on the <img alt="" src="../attachments/Pasted%20image%2020230709201009.png" /> button just to the right of <img alt="" src="../attachments/Pasted%20image%2020230709200940.png" />, or right-clicking on the layer in the Layer Pane and selecting <code>Save layer edits</code>.</li>
+</ul>
+</li>
+</ol>
+<p><center>This ends the first trials with vectorisation in QGIS !</center></p>
+<p>Please do no delete the file <code>meilenblaetter_pointplaces.geojson</code> and, at the end of the day, send the file to <code>bertrand [at] dumenieu [dot] ehess [dot] fr</code>. They will contribute to the DigiKAR datasets. Thank you !</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/digikar-qgis/digikar-qgis.github.io" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

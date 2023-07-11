@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Bertrand Duménieu" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>2. Georefencing historical maps - DigiKAR QGIS tutorial</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../stylesheets/extra.css" rel="stylesheet" />
+    
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "2. Georefencing historical maps";
+        var mkdocs_page_input_path = "tutorials/tutorial_2/text.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+ 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> DigiKAR QGIS tutorial
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">DigiKAR QGIS hands-on session, 11-12 July 2023</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../programme/">Programme</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorial_1/text/">1. Getting started with QGIS</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">2. Georefencing historical maps</a>
+    <ul class="current">
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">More information</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../contact/">Contact</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">DigiKAR QGIS tutorial</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+          <li>Tutorials &raquo;</li>
+      <li>2. Georefencing historical maps</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/digikar-qgis/digikar-qgis.github.io/edit/main/docs/tutorials/tutorial_2/text.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="2-georefencing-historical-maps">2. Georefencing historical maps</h1>
+<h1 id="a-preliminary-steps">A. Preliminary steps</h1>
+<ol>
+<li>Download the data for this tutorial (⚠️~1.6Gb): https://www.swisstransfer.com/d/d9b7b3c8-8c4a-4b7d-b988-acd20da73d69</li>
+<li>Extract the zip archive to your working directory.</li>
+<li>Open the preconfigured QGIS project  <code>Tutorial_2/project.QGZ</code></li>
+<li>Select a <em>MeilenBlatt</em> to georeference in the list available in the layer <code>georeferencing_index</code>. <strong>Each participant should chose a different sheet</strong>.</li>
+<li>In QGIS, enable automatic snapping from <code>Project-&gt;Snapping options...</code>. Toggle <img alt="" src="Pasted image 20230705183316.png" /> and keep the default options:
+<img alt="test" src="../attachments/Pasted%20image%2020230705183425.png" />
+This will make the cursor automatically <em>snap</em> to the closest vertex in the vector layers during coordinate capture.</li>
+</ol>
+<h1 id="b-fast-interactive-georeferencing">B. Fast interactive georeferencing</h1>
+<blockquote>
+<p>🛠️</p>
+</blockquote>
+<ol>
+<li>Install the "Freehand raster georeferencer" plugin. After installing the plugin, a set of tools will appear in the QGIS toolbar: 
+<img alt="" src="../attachments/Pasted%20image%2020230705172819.png" /></li>
+<li>Click on <img alt="" src="../attachments/Pasted%20image%2020230705172837.png" /> and open the <em>Meilenblatt</em> that you have chosen. Use the tools <code>MO[ve]</code>, <code>RO[tate]</code>, <code>SC[ale]</code> and <code>2P</code> (2 points transform) to roughly fit the sheet in its corresponding cell in the grid. You can also try to approximately match the places in the sheet with the point places in the vector layer <code>hov_places</code>.
+<img alt="" src="../attachments/Pasted%20image%2020230705173600.png" /></li>
+<li>Once you are satisfied with the result, click on <img alt="" src="../attachments/Pasted%20image%2020230705173726.png" /> and save it to a file named <code>d_{sheet_number}_georeferenced_fast.png</code> in the folder <code>Tutorial_2/output</code>.</li>
+<li>Open the <code>Tutorial_2/output</code> directory using your computer's file browser. You will notice that the georeferenced file is accompanied by a <code>.pgw</code> file. This simple text file is known as a <a href="https://fr.wikipedia.org/wiki/World_file"><em>World File</em></a>, which contains the parameters for the rigid geometric transformation used by the GIS to display the PNG image within a specific coordinate reference system. You can open this file with a text editor and refer to the description of the <a href="https://de.wikipedia.org/wiki/World-File">WorldFile format on Wikipedia</a> to see what information is required to display a georeferenced image."</li>
+</ol>
+<blockquote>
+<p>ℹ️ When copying/moving a georeferenced image that has a companion World File, make sure to also copy or move the world file along with it!</p>
+<p>ℹ️Here, the georeferenced PNG has not been distorted during the georeferencing process. The output PNG is identical to the original image, and all the georeferencing information is stored in the World File. This is possible because the Freehand georeferencer only performs linear transforms. However, with more advanced georeferencing techniques, the original image often needs to be locally distorted. In such cases, the resulting georeferenced image differs from the original one.</p>
+</blockquote>
+<h1 id="c-georeferencing-with-ground-control-points-the-grid-technique">C. Georeferencing with ground control points: the grid technique</h1>
+<h2 id="a-introduction">a. Introduction</h2>
+<p>The freehand raster georeferencer is an incredibly valuable tool for quick and approximate georeferencing. However, its effectiveness is often limited when precise georeferencing is required.</p>
+<p>Historical maps typically have poor planimetric accuracy. Aligning them with a reference map, such as OpenStreetMap, often involves distorting the historical maps to ensure their content aligns with the reference. This distortion is necessary to achieve a proper match between the two maps.</p>
+<p>Linear transformations are generally not sufficient for historical maps. Non-linear methods such as <strong>polynomial transformations</strong> or <strong>thin plate splines</strong> need to be employed to achieve more accurate and precise results.</p>
+<p>Such methods require a set of <strong>ground control points (GCP)</strong>. The idea behind GCPs is to establish a correspondence between a pixel position in the source image and a geographic or projected position in an coordinate reference system.</p>
+<p>Thus, a GCP is a pair of points that are typically placed on the depiction of the same geographic entity both in the image and on a reference map already in a geo/projected CRS like, for instance, the OpenStreetMap basemap.</p>
+<p>These entities can be anything, depending on the image to process: buildings, natural objects, roads, ...</p>
+<p>Unfortunately, the landscapes depicted in historical maps often no longer exist, making it challenging to find suitable GCPs.</p>
+<p>Furthermore, when dealing with maps composed of multiple sheets, such as the <em>Meilenblätter</em>, placing GCPs solely on geographic entities does not provide control over how adjacent sheets should be stitched together. In other words, the original grid structure of the sheet is not preserved during the georeferencing process.</p>
+<p>In soùme cases, maps like the Meilenblätter include a cartographic grid with well-documented parameters such as its resolution, dimensions, and orientation, which allows for its reconstruction in the geographic reference system.</p>
+<p>A common and effective approach is to define GCPs on this reconstructed grid. This approach ensures that the georeferenced sheets align correctly with each other. It also helps prevent interpretation errors regarding the correspondence between GCPs placed on different geographic entities. This method provides a robust solution while maintaining accuracy during the georeferencing process.</p>
+<h2 id="b-gcp-based-georeferencing-on-the-meilenblatter-grid">b. GCP-based georeferencing on the <em>Meilenblätter</em> grid</h2>
+<blockquote>
+<p>🛠️</p>
+</blockquote>
+<ol>
+<li>Open the QGIS georeferencer from the menu <code>Layer-&gt;Georeferencer</code>.</li>
+<li>Click on <img alt="" src="../attachments/Pasted%20image%2020230705182811.png" /> to load the the original, non-georeferenced <em>Meilenblatt</em> .</li>
+<li>Use the <code>Add Point</code> tool <img alt="" src="../attachments/Pasted%20image%2020230705183013.png" /> to define GCPs on each corner of the sheet, both in the image view and the map view, using the recreated grid <code>georeferencing_index</code>.
+<img alt="" src="Pasted image 20230705184245.png" /></li>
+<li>Save the GCPs in  <code>Tutorial_2/output/d_{sheet_number}.png.points</code> using <img alt="" src="../attachments/Pasted%20image%2020230705184956.png" /> (or from <code>File-&gt;Save GCP Points as...</code>)</li>
+<li>
+<p>Next, click on <code>Transformation Settings</code> <img alt="" src="../attachments/Pasted%20image%2020230705184409.png" /> to access the settings for the transformation. Here, you can specify the type of transformation method to be applied and the target Coordinate Reference System (CRS), among other options.
+To ensure the corners of the image match precisely, select "Thin Plate Spline" as the transform type and set the target CRS to <code>EPSG:3398 (RD/83 / 3-degree Gauss-Kruger zone 4)</code>.</p>
+</li>
+<li>
+<p>Save the georeferenced image as <code>Tutorial_2/output/d_{sheet_number}_georeferenced_grid.tif</code> and keep the resampling method unchanged:
+<img alt="" src="../attachments/Pasted%20image%2020230705184913.png" /></p>
+</li>
+<li>
+<p>Click <code>OK</code> to confirm the settings and initiate the georeferencing process by clicking the button !<img alt="" src="../attachments/Pasted%20image%2020230705185320.png" />. The georeferenced sheet should then be automatically loaded into the project.</p>
+</li>
+<li>
+<p>Click <code>OK</code> and run the georefencing with the button<img alt="" src="../attachments/Pasted%20image%2020230705185320.png" />. The georeferenced sheet should be automatically loaded into the project.</p>
+</li>
+<li>Notice how the georeferenced sheet does not align well with the HOV places or the OSM basemap. This is the result of two factors: the imperfect accuracy of the grid and the inherent spatial inaccuracies within the <em>Meilenblätter</em>. To achieve a more accurate georeferencing of the map content, we need to locally warp it. This can be accomplished by adding GCPs directly onto the geographic entities depicted in the map.</li>
+</ol>
+<h1 id="d-georeferencing-with-ground-control-points-gcps-on-persistent-entities">D. Georeferencing with ground control points: GCPs on persistent entities</h1>
+<p>Because setting GCPs only on entities would cause mismatches between adjacent sheets, we want to retain the GPCs put on the grid corners increase the number of control points.</p>
+<p>This time we will use the OSM basemap as the reference.</p>
+<blockquote>
+<p>🛠️</p>
+</blockquote>
+<ol>
+<li>Open the georeferencer and load the original sheet image once again. Import the grid GCPs that were previously defined using the button <img alt="" src="../attachments/Pasted%20image%2020230705190605.png" />. </li>
+<li>Look for entities that are depicted both in the OSM reference map and in the sheet, i.e. entities in the <em>Meilenblatt</em> that still exist today. The best candidates for GCPs are <strong>churches</strong> since they were commonly used as reference points during the topographic survey of the <em>Meilenblätter</em>.</li>
+</ol>
+<blockquote>
+<p>ℹ️ There is no golden rule on the placement strategy for GCPs as it varies depending on the specific map being processed. However, there are some best practices that can help achieve higher-quality georeferencing:
+- The more GCPs, the better, but it's preferable to have a few reliable points rather than many questionable ones.
+- Aim to cover the entire sheet with GCPs. Since the geometric transformation relies solely on the information provided by the GCPs, it's best to avoid leaving large areas of the sheet empty of GCPs to prevent dramatic distortions in those areas.
+- Tall and compact structures such as churches, bell towers, and castles are excellent candidates for GCPs. They were often used as triangulation points during the topographic survey of historical maps, making their positions on the map more accurate and reliable compared to features like roads or mountain summits.
+<img alt="" src="../attachments/Pasted%20image%2020230705191553.png" />
+<img alt="" src="../attachments/Pasted%20image%2020230705191606.png" />
+<small>Figure: The same church depicted in a Meilenblatt and on OSM. The point is the location of that place regirstered in the HOV.</small></p>
+</blockquote>
+<ol>
+<li>Once you have added a reasonable number of control points, run a new georefenrencing using the same transformation as before. Save the georeferenced image as <code>Tutorial_2/output/d_{sheet_number}_georeferenced_dense.tif</code>.</li>
+</ol>
+<p>ℹ️ Feel free to run intermediate georeferencings. Working incrementally and adding/adjusting GCPs along the way helps maintain control over their quality and improves the final outcome.</p>
+<ol>
+<li>Finally, save the GCPs as <code>Tutorial_2/output/d_{sheet_number}_dense_.png.points</code>.</li>
+<li>Compare the three different georeferencings visually and observe the effects of the warping on the resulting map, particularly on the edges of the sheet.</li>
+</ol>
+<h1 id="e-clipping-the-georeferenced-raster">E. Clipping the georeferenced raster</h1>
+<p>You've certainly noticed that the sheet is framed by a black border that contains no cartographic information and that overlaps with adjacent sheets</p>
+<p><img alt="" src="../attachments/Pasted%20image%2020230709140813.png" /></p>
+<p>It would be better to remove this border and clip the georeferenced raster so that it fits into its corresponding grid tile.</p>
+<p>The vector grids <code>grid_sheets</code> and <code>georeferencing_index</code> have been designed so that each tile is a polygon. We're going to reuse the tile polygone as a mask shape to clip the georeferenced sheet.</p>
+<ol>
+<li>
+<ol>
+<li>First, we need to isolate the tile corresponding to the sheet into a separate layer. Hide the georeferenced sheet  by unchecking it in the Layer Pane si the the tile in <code>georeferencing_index</code> becomes visible. Select this layer in the Layer Pane, then with the map tool <code>entity selection</code> <img alt="" src="../attachments/Pasted%20image%2020230709141322.png" />  click on the tile to select it. 
+<img alt="" src="../attachments/Pasted%20image%2020230709144216.png" /></li>
+</ol>
+</li>
+<li>Hit <code>CRTL+C</code> or go to <code>Edit-&gt;Copy entities</code> to copy the selected tile polygon.</li>
+<li>Then,  go to  <code>Edit-&gt;Paste entitie as...-&gt; New Vector Layer</code> to paste the polygon to a new layer and save it  as a GeoJSON  file to <code>Tutorial 2/output/mask.geosjon</code>. The resulting layer, containing only the copy-pasted tile, should be automatically loaded to QGIS as a new layer named <code>mask</code>.</li>
+<li>Now go to the menu <code>Raster-&gt;Extraction-&gt;Clip vector layer by mask layer</code> and configure clipping as below. Don't forget to check "Create an output alpha band" so that clipped borders are transparent.
+<img alt="" src="../attachments/Pasted%20image%2020230709142426.png" /></li>
+<li>This will create a new georeferenced TIF file. Choose to save it as <code>Tutorial 2/output/d_{sheet_number}_georeferenced_clipped.tif</code>, and click <code>Run</code>.</li>
+<li>The final map, georeferenced and without black borders, should now be displayed in QGIS:
+<img alt="" src="../attachments/Pasted%20image%2020230709142949.png" /></li>
+</ol>
+<p><center>This ends the tutorial on georeferencing in QGIS !</center></p>
+<p>Please do no delete the files <code>d_{sheet_number}_georeferenced_clipped.tif</code> and <code>d_{sheet_number}_georeferenced_clipped.tif</code>  . 
+We'll collect them at the end of the session to create a single georeferenced map based on everyone's contributions.
+Thank you !</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../tutorial_1/text/" class="btn btn-neutral float-left" title="1. Getting started with QGIS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../contact/" class="btn btn-neutral float-right" title="Contact">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/digikar-qgis/digikar-qgis.github.io" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../tutorial_1/text/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../contact/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Bertrand Duménieu" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>4. Collaborative vectorisation - DigiKAR QGIS tutorial</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../stylesheets/extra.css" rel="stylesheet" />
+    
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "4. Collaborative vectorisation";
+        var mkdocs_page_input_path = "tutorials/tutorial_4/text.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+ 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> DigiKAR QGIS tutorial
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">DigiKAR QGIS hands-on session, 11-12 July 2023</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../programme/">Programme</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorial_1/text/">1. Getting started with QGIS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorial_2/text/">2. Georefencing historical maps</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">More information</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../contact/">Contact</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">DigiKAR QGIS tutorial</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li>4. Collaborative vectorisation</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/digikar-qgis/digikar-qgis.github.io/edit/main/docs/tutorials/tutorial_4/text.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="4-collaborative-vectorisation">4. Collaborative vectorisation</h1>
+<p>The last tutorial demonstrated the vectorisation of data in a vector-based geographic data file stored locally on the computer.</p>
+<p>The purpose of this last tutorial is to experiment with collaborative vectorisation, where each QGIS client connects to a vector data source stored on a remote geographic database.
+This time, each participant will contribute to a common dataset.</p>
+<h1 id="a-preliminary-steps">A. Preliminary steps</h1>
+<ol>
+<li>Download the data for this tutorial (~200Kb): <a href="https://www.swisstransfer.com/d/c36a7046-2d38-4ee6-8d8e-245c37cad77b">https://www.swisstransfer.com/d/c36a7046-2d38-4ee6-8d8e-245c37cad77b</a></li>
+<li>Extract the zip archive to your working directory.</li>
+<li>Open the QGIS project <code>Tutorial_4/project.QGZ</code></li>
+</ol>
+<h1 id="b-setting-up-the-project">B. Setting-up the project</h1>
+<h3 id="1-connecting-to-the-remote-postgresql-database">1. Connecting to the remote PostgreSQL database</h3>
+<p>A PostgreSQL database has been configured prior to the tutorial, and a bootstrap dataset has been uploaded.
+To load this dataset as a layer in QGIS, you need first to connect to the PostgreSQL server.</p>
+<ol>
+<li>Go to <code>Layer-&gt; Data Source Manager</code>, and from the tab <code>PostgreSQL</code> create a <code>New</code> connection wich the following information:</li>
+<li>Name: give this connection a name, like "DigiKAR QGIS tutorial"</li>
+<li>Service: leave empty</li>
+<li>Host: <code>geohistoricaldata.org</code></li>
+<li>Port: <code>5432</code></li>
+<li>Database: <code>qgis-turorial</code></li>
+</ol>
+<p>In <code>Authentication</code>, chose <code>Basic</code> and set the following credentials:
+- Username: <code>qgis-tutorial</code>
+- Password: <code>qgis-tutorial</code>
+Click on <code>store</code> so QGIS will store the credentials.</p>
+<p><img alt="" src="../attachments/Pasted%20image%2020230709205549.png" /></p>
+<p>Click on <code>Test Connection</code> to ensure that everything is fine, and click <code>OK</code>.</p>
+<ol>
+<li>Now, click on <code>Connect</code> to read the available geodata table from the database. The table <code>road_network</code> should be listed in the public schema. Select the table and click on <code>Add</code> to load it. <img alt="" src="../attachments/Pasted%20image%2020230709212538.png" /></li>
+</ol>
+<blockquote>
+<p>ℹ️ Note how the layer has been loaded with a categorized symbology. This is possible because QGIS is able to store its own layer styles within the database and load them when needed.  </p>
+</blockquote>
+<h3 id="2-setting-up-the-map-tools">2. Setting up the map tools</h3>
+<p>Road networks are significantly more complex than the mills and calvaries points from that last tutorial, because topology comes into play.
+Cependant, la topologie d'un réseau peut-être corrigée automatiquement avec un post-traitement, à condition que le réseau soit au moins navigable, c'est à dire que tous les segments d'une intersection se touchent exactement au même point.</p>
+<p>Cette condition est impossible à respecter manuellement, mais QGIS propose des options un mécanisme de snapping qui permet de réaliser cela très facilement.
+1. Go to the menu <code>Project-&gt;Snapping options</code> and enable snapping <img alt="" src="../attachments/Pasted%20image%2020230709214508.png" />.
+2. Allow snapping of <strong>vertices and segments</strong>, leaving the default snapping distance.
+3. Also toggle <code>Topological editing</code> and <code>Snapping on intersection</code>.  With topological editing, when you  move common vertices/segments, QGIS will also move them in the geometries of the neighboring feature. Snapping on intersection allows you to snap to geometry intersections of snapping enabled layers, even if there are no vertices at the intersections.
+<img alt="" src="../attachments/Pasted%20image%2020230709214809.png" /></p>
+<blockquote>
+<p>ℹ️ More details about snapping is available in the QGIS documentation: https://docs.qgis.org/3.28/en/docs/user_manual/working_with_vector/editing_geometry_attributes.htm</p>
+</blockquote>
+<h1 id="c-lets-vectorize">C. Let's vectorize !</h1>
+<p><strong>This part exercise will be carried out collectively during the session</strong></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/digikar-qgis/digikar-qgis.github.io" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
