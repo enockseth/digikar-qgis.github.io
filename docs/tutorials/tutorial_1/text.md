@@ -32,7 +32,8 @@ Lastly, apologies for all the *frenchisms* in the text 🙂
 ## a. Setting up the working directory
 1. Create a new folder in the location of your choice to store the material and projects of the next tutorials. This folder will be your working directory.
 2. Download the data for this tutorial (~1.5Mb): [https://www.swisstransfer.com/d/64cf26cf-2824-4ae0-9dbe-be09ff12a4f5](https://www.swisstransfer.com/d/64cf26cf-2824-4ae0-9dbe-be09ff12a4f5)
-3. Extract the zip archive to your working directory.## b. Creating a new QGIS project 
+3. Extract the zip archive to your working directory.
+## b. Creating a new QGIS project 
 Before starting to experiment with the GUI, let's start by creating a project to hold all the data and configuration of the tutorials.
 
 On start-up, QGIS is initialized with an empty project, labelled `Untilted Project`.
